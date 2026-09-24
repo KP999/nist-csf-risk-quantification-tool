@@ -19,10 +19,25 @@ Built as a portfolio extension of risk quantification work I did during the EY T
 Likelihood and Severity are each scored on a qualitative scale (Low = 3, Medium = 6, High = 9), multiplied to produce a 9-point-to-81-point inherent risk score. This is a standard semi-quantitative approach consistent with NIST SP 800-30 and NIST CSF's risk assessment category (ID.RA). Risk level thresholds and control-effectiveness percentages are analyst judgment calls made for this model company; THEY ARE NOT SOURCED FROM A REAL BREACH DATASET AND ARE DOCUMENTED AS ASSUMPTIONS IN THE WORKBOOK ITSELF.
 ## Repo contents
 
-- `Risk_Assessment_Tool_Old.xlsx` — the original prototype model (Introduction, Tutorial, and Risk Assessment Tool tabs)
-- `Risk_Assessment_Tool.xlsx` — the full revamped model (Introduction, Tutorial, and Risk Assessment Tool tabs)
-- `risk_model.py` — *(planned)* a Python/pandas rebuild of the same logic, for a code-based version of the same analysis
-- `screenshots/` — *(planned)* a couple of screenshots of the register and chart, for anyone who doesn't want to download the file to see it
+- `excel-model` — the original prototype model (Introduction, Tutorial, and Risk Assessment Tool tabs) and the full revamped model (Introduction, Tutorial, and Risk Assessment Tool tabs)
+- `python-model` — a Python/pandas rebuild of the same logic, for a code-based version of the same analysis
+    - `risk_data.py` — risk scenarios, ratings, and control-effectiveness data
+    - `risk_model.py` — inherent/residual risk calculations, best-control logic, and average risk reduction by control
+    - `visualize.py` — builds the Likelihood x Severity risk heat map
+    - `main.py` — single entry point; running it produces the full summary and heat map
+    - `heatmap.png` — the generated heat map image
+
+### Risk Heat Map
+
+![Risk Heat Map](python-model/heatmap.png)
+
+## How to run the Python version
+
+```
+cd python-model
+pip install -r requirements.txt
+python main.py OR py main.py
+```
 
 ## Why I built this
 
@@ -33,4 +48,3 @@ This tool is meant to demonstrate that I can take a framework like NIST CSF and 
 
 - Ratings and control-effectiveness percentages are illustrative, not derived from real incident data
 - Only six risk scenarios are modeled currently — a production version would cover a broader risk universe
-- A Python version (pandas for the model, matplotlib for visualization) is in progress to show the same logic implemented in code
