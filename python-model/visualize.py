@@ -38,5 +38,3 @@ plt.ylabel("Severity")
 plt.tight_layout()
 plt.savefig("heatmap.png", dpi=150)
 plt.show()
-
-print(grid)
